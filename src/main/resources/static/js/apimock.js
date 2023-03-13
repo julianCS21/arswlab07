@@ -1,6 +1,6 @@
 //@author hcadavid
 
-apimock=(function(){
+export const apimock = (function(){
 
 	var mockdata=[];
 
@@ -35,3 +35,4 @@ var fun=function(list){
 
 apimock.getBlueprintsByAuthor("johnconnor",fun);
 apimock.getBlueprintsByNameAndAuthor("johnconnor","house",fun);*/
+
