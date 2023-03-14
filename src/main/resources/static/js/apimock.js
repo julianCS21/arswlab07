@@ -27,12 +27,16 @@ export const apimock = (function(){
 
 })();
 
+
 /*
-Example of use:
 var fun=function(list){
 	console.info(list);
 }
 
 apimock.getBlueprintsByAuthor("johnconnor",fun);
 apimock.getBlueprintsByNameAndAuthor("johnconnor","house",fun);*/
+
+
+
+
 
