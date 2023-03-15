@@ -16,7 +16,7 @@
     <body>
         <h1 id = "desc">Blueprints of :</h1>
         <input type="text" id="author">
-        <button class = "add_row" >Get Blueprints</button>
+        <button class = "add_row" onclick="app.getBlueprints()">Get Blueprints</button>
         <table>
             <tr>
                 <thead>
@@ -27,5 +27,7 @@
             </tr>
         </table>
         <h1 id="totalBlueprints">Total user points : 0</h1>
+        <h1 id="nameBlueprint">Current Blueprint :</h1>
+        <canvas id="myCanvas" width="400" height="400" style= "bottom: 30rem; border:1px solid rgb(7, 0, 41);"></canvas>
     </body>
 </html>
