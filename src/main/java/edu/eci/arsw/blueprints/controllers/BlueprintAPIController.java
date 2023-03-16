@@ -53,7 +53,7 @@ public class BlueprintAPIController {
         }
     }
 
-    @GetMapping(path = "/{author}/{bpname}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/{author}/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> getBlueprintByAuthorAndName(@PathVariable String author, @PathVariable String name){
         try {
             Set<Blueprint> result = bps.getBlueprintsByAuthorAndName(author,name);

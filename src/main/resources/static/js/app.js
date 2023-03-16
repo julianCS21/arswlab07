@@ -1,6 +1,10 @@
 import {apimock} from './apimock.js';
+//import {apiclient} from '/apiclient.js';
 
 //simulacion del objeto en base a funcion.
+//var getData = apimock;
+//var getData = apiclient;
+
 function Blueprint(author,blueprints){
     let _author = author;
     let _blueprints = blueprints;
@@ -58,10 +62,22 @@ window.app = function(){
 
 
     function drawBlueprints(author,name){
-        console.log("a");
-        
-
+        $("#nameBlueprint").text("Current Blueprint: " + name);
+        apimock.getBlueprintsByNameAndAuthor(author,name,function(object){
+            const points = object.points;
+            var canvas = $("#Canvas");
+            canvas = $("#Canvas")[0];
+            var ctx = canvas.getContext("2d");
+            //ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.moveTo(points[0]["x"],points[0]["y"]);
+            for(let i=1;i<points.length; i++){
+                ctx.lineTo(points[i]["x"],points[i]["y"]);
+            }
+            ctx.stroke();
+        })  
     } 
+
+
     return{
             getBlueprints : getBlueprints,
             drawBlueprints : drawBlueprints
