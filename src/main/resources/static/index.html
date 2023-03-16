@@ -1,34 +1,38 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport"
-              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Blueprints</title>
-        <script src="/webjars/jquery/jquery.min.js"></script>
-        <script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="js/apimock.js" type="module"></script>
-        <script src="js/app.js" type="module"></script>
-        <script src="js/apiclient.js" type="module"></script>
-        <link rel="stylesheet"
-              href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
-    </head>
-    <body>
-        <h1 id = "desc">Blueprints of :</h1>
-        <input type="text" id="author">
-        <button class = "add_row" onclick="app.getBlueprints()">Get Blueprints</button>
-        <table>
-            <tr>
-                <thead>
-                    <th>Blueprint name</th>
-                    <th>number of points</th>
-                    <th>enter</th>
-                </thead>
-            </tr>
-        </table>
-        <h1 id="totalBlueprints">Total user points : 0</h1>
-        <h1 id="nameBlueprint">Current Blueprint :</h1>
-        <canvas id="Canvas" width="400" height="400" style= "bottom: 30rem; border:1px solid rgb(7, 0, 41);"></canvas>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Blueprints</title>
+    <link rel="stylesheet" href="design.css">
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/apimock.js" type="module"></script>
+    <script src="js/app.js" type="module"></script>
+    <script src="js/apiclient.js" type="module"></script>
+    <link rel="stylesheet"
+          href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+</head>
+<body>
+<h1 id="desc">Blueprints of:</h1>
+<input type="text" id="author">
+<!--<button class="add_row" onclick="app.getBlueprints()">Get Blueprints</button>-->
+<button type="button" class="btn btn-primary add_row" onclick="app.getBlueprints()">Get Blueprints</button>
+<table>
+    <tr>
+        <thead>
+        <th>Blueprint name</th>
+        <th>number of points</th>
+        <th>enter</th>
+        </thead>
+    </tr>
+</table>
+<h1 id="totalBlueprints">Total user points: 0</h1>
+<div style="position: relative;">
+    <canvas id="Canvas" width="400" height="400" style="float: right; border:1px solid rgb(7, 0, 41); margin-top: -85px; margin-right: 80px;"></canvas>
+    <h1 id="nameBlueprint" style="position: absolute; top: -140px; right: 300px;">Current Blueprint:</h1>
+</div>
+</body>
 </html>
