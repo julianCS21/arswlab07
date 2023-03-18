@@ -76,12 +76,38 @@ window.app = function(){
             }
             ctx.stroke();
         })  
-    } 
+    }
+
+    function Oninit(){
+        var canvas = $("#Canvas");
+        canvas = $("#Canvas")[0];
+        var ctx = canvas.getContext("2d");
+        if(window.PointerEvent) {
+            canvas.addEventListener("pointerdown", function(event){
+              alert('pointerdown at '+event.pageX+','+event.pageY);  
+              
+            });
+          }
+          else {
+            canvas.addEventListener("mousedown", function(event){
+                        alert('mousedown at '+event.clientX+','+event.clientY);  
+    
+              }
+            );
+          }
+        };    
+      
+
+    
+    
+    
+
 
 
     return{
             getBlueprints : getBlueprints,
-            drawBlueprints : drawBlueprints
+            drawBlueprints : drawBlueprints,
+            Oninit : Oninit
     }
 
 }();
