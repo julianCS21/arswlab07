@@ -2,8 +2,8 @@ import {apimock} from './apimock.js';
 import {apiclient} from './apiclient.js';
 
 //simulacion del objeto en base a funcion.
-//var getData = apimock;
-var getData = apiclient;
+var getData = apimock;
+//var getData = apiclient;
 
 function Blueprint(author,blueprints){
     let _author = author;
@@ -62,14 +62,13 @@ window.app = function(){
 
 
     function drawBlueprints(author,name){
-        $("#nameBlueprint").text("Current Blueprint: " + name);
+        $("#nameBlueprint").text("Current Blueprint:" + " "  + name);
         getData.getBlueprintsByNameAndAuthor(author,name,function(object){
             const points = object.points;
             console.log(points);
             var canvas = $("#Canvas");
             canvas = $("#Canvas")[0];
             var ctx = canvas.getContext("2d");
-            //ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.moveTo(points[0]["x"],points[0]["y"]);
             for(let i=1;i<points.length; i++){
                 ctx.lineTo(points[i]["x"],points[i]["y"]);
@@ -80,13 +79,26 @@ window.app = function(){
 
     function Oninit(){
         var canvas = $("#Canvas");
-        canvas = $("#Canvas")[0];
         var ctx = canvas.getContext("2d");
+        canvas = $("#Canvas")[0];
         if(window.PointerEvent) {
             canvas.addEventListener("pointerdown", function(event){
-              alert('pointerdown at '+event.pageX+','+event.pageY);  
-              
-            });
+                const newPoints = {
+                    "x": event.clientX,
+                    "y" : event.clientY
+                }
+                var author = ( $("#author").val()).split(" ").join("");
+                var name = ($("#nameBlueprint").text().split(" ")[2]);
+                getData.saveBlueprint(author,name,function(list){
+                    var lastpoint = list.points[list.points.length - 1];
+                    list.points.push(newPoints);
+                    getBlueprints();
+                    
+
+
+                    
+                })
+              })
           }
           else {
             canvas.addEventListener("mousedown", function(event){

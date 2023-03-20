@@ -22,6 +22,14 @@ export const apimock = (function(){
 			callback(
 				mockdata[authname].find(function(e){return e.name===bpname})
 			);
+		},
+
+
+		saveBlueprint:function(authname,bpname,callback){
+			callback(
+				mockdata[authname].find(function(e){return e.name===bpname})
+			)
+
 		}
 	}	
 
