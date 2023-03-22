@@ -92,8 +92,10 @@ public class InMemoryBlueprintPersistence implements BlueprintsPersistence {
             Blueprint bpset = blueprints.get(tp);
             bpset.setAuthor(bp.getAuthor());
             bpset.setName(bp.getName());
+            bpset.setPoints(bp.getPoints());
         }catch (NullPointerException e){
             throw new BlueprintNotFoundException(e.getMessage());
+
         }
 
 

@@ -28,7 +28,8 @@ function Blueprint(author,blueprints){
 }
 
 
-
+var blueprints = [];
+var newPointsforAPI = [];
 //llamado al callback de apimock
 
 window.app = function(){
@@ -39,9 +40,11 @@ window.app = function(){
         getData.getBlueprintsByAuthor(author,function(list){
             const listBlueprints = list.map(function(elem){
                 const newlist = [elem.name,elem.points];
+
                 return new Blueprint(elem.author,newlist);
                 
             });
+            blueprints = listBlueprints;
             $("table tbody").empty();
             const column = listBlueprints.map(function(blueprint){
                 var columnPartial = "<tr><td align=\"center\" id=\""+blueprint.getName()+"\">"+blueprint.getName()+"</td><td align=\"center\">"+blueprint.getPoints().length+"</td><td><button onclick=\"app.drawBlueprints('"+blueprint.getAuthor() + "','" + blueprint.getName() + "')\">Open</button></td></tr>";
@@ -69,6 +72,7 @@ window.app = function(){
             var canvas = $("#Canvas");
             canvas = $("#Canvas")[0];
             var ctx = canvas.getContext("2d");
+            canvas.width = canvas.width;
             ctx.moveTo(points[0]["x"],points[0]["y"]);
             for(let i=1;i<points.length; i++){
                 ctx.lineTo(points[i]["x"],points[i]["y"]);
@@ -77,26 +81,27 @@ window.app = function(){
         })  
     }
 
+
+    
+
     function Oninit(){
         var canvas = $("#Canvas");
-        var ctx = canvas.getContext("2d");
         canvas = $("#Canvas")[0];
+        let rect = canvas.getBoundingClientRect();
+        var ctx = canvas.getContext("2d");
         if(window.PointerEvent) {
             canvas.addEventListener("pointerdown", function(event){
                 const newPoints = {
-                    "x": event.clientX,
-                    "y" : event.clientY
+                    "x": event.clientX - rect.left,
+                    "y" : event.clientY - rect.top-10
                 }
+                newPointsforAPI.push(newPoints);
                 var author = ( $("#author").val()).split(" ").join("");
                 var name = ($("#nameBlueprint").text().split(" ")[2]);
                 getData.saveBlueprint(author,name,function(list){
-                    var lastpoint = list.points[list.points.length - 1];
                     list.points.push(newPoints);
                     getBlueprints();
-                    
-
-
-                    
+                    drawBlueprints(author,name);    
                 })
               })
           }
@@ -107,7 +112,31 @@ window.app = function(){
               }
             );
           }
-        };    
+        };
+        
+        
+        
+        
+        function updateBlueprint(){
+            var author = ( $("#author").val()).split(" ").join("");
+            var name = ($("#nameBlueprint").text().split(" ")[2]);
+            var blueprint = blueprints.find(function(bp){
+                if(bp.getAuthor() === author && bp.getName() === name){
+                    return bp;
+                }
+            })
+            var points = blueprint.getPoints();
+            for(let i = 0; i < newPointsforAPI.length; i++){
+                points.push(newPointsforAPI[i]);
+
+            }
+            var object = {
+                "author": blueprint.getAuthor(),
+                "points" : blueprint.getPoints(),
+                "name" : blueprint.getName()
+            }
+            
+        }
       
 
     
@@ -119,7 +148,8 @@ window.app = function(){
     return{
             getBlueprints : getBlueprints,
             drawBlueprints : drawBlueprints,
-            Oninit : Oninit
+            Oninit : Oninit,
+            updateBlueprint: updateBlueprint
     }
 
 }();
