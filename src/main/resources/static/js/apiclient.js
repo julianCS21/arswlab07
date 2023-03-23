@@ -38,6 +38,23 @@ export const apiclient = (function(){
             })         
         },
 
+
+        createBlueprint : function(object){
+            $.ajax({
+                url: 'http://localhost:8080/blueprints',
+                type: "POST",
+                data : object,
+                contentType : "application/json",
+                success: function(result){
+                    alert("blueprint was created");
+                },
+                error: function(xhr, status, error){
+                    alert("blueprint didnt created");
+                }
+            })
+
+        },
+
         deleteBlueprint : function(author,name){
          $.ajax({
                 url: url  + author + "/" + name,

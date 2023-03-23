@@ -114,21 +114,30 @@ window.app = function () {
                     //drawBlueprints(author, name);
                 //})
                 newPointsforAPI.push(newPoints);
-                if(newPointsforAPI.length == 1){
-                    ultimatePoint = {
-                        "x" : points[points.length - 1]["x"],
-                        "y" : points[points.length - 1]["y"]
-                    }                    
+                if(points.length < 2){
+                    alert("please, click the canvas for create a new point and create a rect");
+                    updateBlueprint();
+                    getBlueprints();
                 }
                 else{
-                    ultimatePoint = {
-                        "x" : newPointsforAPI[newPointsforAPI.length - 2]["x"],
-                        "y" : newPointsforAPI[newPointsforAPI.length - 2]["y"]
+                    if(newPointsforAPI.length == 1){
+                        ultimatePoint = {
+                            "x" : points[points.length - 1]["x"],
+                            "y" : points[points.length - 1]["y"]
+                        }                    
                     }
+                    else{
+                        ultimatePoint = {
+                            "x" : newPointsforAPI[newPointsforAPI.length - 2]["x"],
+                            "y" : newPointsforAPI[newPointsforAPI.length - 2]["y"]
+                        }
+                    }
+                    ctx.moveTo(ultimatePoint["x"],ultimatePoint["y"]);
+                    ctx.lineTo(newPoints["x"],newPoints["y"]);
+                    ctx.stroke();
+                    
                 }
-                ctx.moveTo(ultimatePoint["x"],ultimatePoint["y"]);
-                ctx.lineTo(newPoints["x"],newPoints["y"]);
-                ctx.stroke();
+                
             })
         }
         else {
@@ -139,6 +148,23 @@ window.app = function () {
             );
         }
     };
+
+
+    function createBlueprint(){
+        var canvas = $("#Canvas");
+        canvas = $("#Canvas")[0];
+        var ctx = canvas.getContext("2d");
+        canvas.width = canvas.width;
+        var author = ($("#author").val()).split(" ").join("");
+        let data = prompt("digite el nombre del blueprint");
+        var object = {
+            "author" : author,
+            "points" : [],
+            "name" : data
+        }
+        getData.createBlueprint(JSON.stringify(object));
+        getBlueprints();
+    }
 
 
 
@@ -177,13 +203,14 @@ window.app = function () {
         canvas.width = canvas.width;
         getData.deleteBlueprint(author, name);
         getBlueprints();
-            }
+    }
     return {
         getBlueprints: getBlueprints,
         drawBlueprints: drawBlueprints,
         Oninit: Oninit,
         updateBlueprint: updateBlueprint,
-        deleteBlueprint:deleteBlueprint
+        deleteBlueprint:deleteBlueprint,
+        createBlueprint:createBlueprint
     }
 
 }();
