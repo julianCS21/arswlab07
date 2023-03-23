@@ -7,4 +7,6 @@ import java.util.Set;
 public interface filter {
 
     public void filter(Set<Blueprint> bp);
+
+    public void filter(Blueprint bp);
 }

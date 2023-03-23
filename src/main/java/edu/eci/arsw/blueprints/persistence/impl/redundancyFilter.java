@@ -12,6 +12,7 @@ import java.util.Set;
 
 
 @Service
+@Primary
 public class redundancyFilter implements filter {
 
 
@@ -43,4 +44,12 @@ public class redundancyFilter implements filter {
         }
 
     }
+
+    public void filter(Blueprint bp){
+        List<Point> newPoints = eliminateDuplicate(bp.getPoints());
+        bp.setPoints(newPoints);
+    }
+
+
+    
 }

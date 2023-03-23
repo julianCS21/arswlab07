@@ -21,9 +21,9 @@ export const apiclient = (function(){
 
 
         saveBlueprint : function(author,name,object){
-            let promise = new Promise(function(resolve,eject){
+            let promise = new Promise(function(resolve,reject){
                 $.ajax({
-                    url: url + "/" + author + "/" + name,
+                    url: url  + author + "/" + name,
                     type: "PUT",
                     data: object,
                     contentType: "application/json"

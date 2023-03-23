@@ -42,4 +42,11 @@ public class subsamplingFilter implements filter {
 
     }
 
+
+    @Override
+    public void filter(Blueprint bp) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'filter'");
+    }
+
 }
