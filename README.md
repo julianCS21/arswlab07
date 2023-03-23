@@ -2,6 +2,8 @@
 #### Procesos de desarrollo de software - PDSW
 #### Construción de un cliente 'grueso' con un API REST, HTML5, Javascript y CSS3. Parte II.
 
+### Autores: Julian Castillo
+
 
 
 ![](img/mock2.png)
@@ -12,6 +14,7 @@
 	1. Se agregue el punto al final de la secuencia de puntos del canvas actual (sólo en la memoria de la aplicación, AÚN NO EN EL API!).
 	2. Se repinte el dibujo.
 
+### Nota: los cambios se visualizan al darle una segunda vez al botón
 3. Agregue el botón Save/Update. Respetando la arquitectura de módulos actual del cliente, haga que al oprimirse el botón:
 	1. Se haga PUT al API, con el plano actualizado, en su recurso REST correspondiente.
 	2. Se haga GET al recurso /blueprints, para obtener de nuevo todos los planos realizados.
@@ -45,6 +48,8 @@
 
 	1. Hacer POST al recurso /blueprints, para crear el nuevo plano.
 	2. Hacer GET a este mismo recurso, para actualizar el listado de planos y el puntaje del usuario.
+
+### Nota: los cambios se visualizan al darle una segunda vez al botón
 
 5. Agregue el botón 'DELETE', de manera que (también con promesas):
 	* Borre el canvas.
