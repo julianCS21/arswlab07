@@ -4,7 +4,7 @@
 
 ### Autor: Julian Castillo y Camilo Cantillo
 
-## NOTA : LOS BOTONES FUNCIONAN SI SE ORPIME MAS DE UNA VEZ!!
+## NOTA : LOS BOTONES FUNCIONAN SI SE DA DOBLE CLICK!!
 
 
 
