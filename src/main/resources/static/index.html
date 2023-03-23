@@ -16,25 +16,33 @@
           href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
 </head>
 <body onLoad="app.Oninit()">
-<h1 id="desc">Blueprints of:</h1>
-<input type="text" id="author">
-<!--<button class="add_row" onclick="app.getBlueprints()">Get Blueprints</button>-->
-<button type="button" class="btn btn-primary add_row" onclick="app.getBlueprints()">Get Blueprints</button>
-<table>
-    <tr>
-        <thead>
-        <th>Blueprint name</th>
-        <th>number of points</th>
-        <th>enter</th>
-        </thead>
-    </tr>
-</table>
-<h1 id="totalBlueprints">Total user points: 0</h1>
-<div style="position: relative;">
-    <canvas id="Canvas" width="400" height="400" style="float: right; border:1px solid rgb(7, 0, 41); margin-top: -85px; margin-right: 80px;"></canvas>
-    <h1 id="nameBlueprint" style="position: absolute; top: -140px; right: 300px;">Current Blueprint:</h1>
+<div style="display: flex;">
+    <div style="width: 70%; height: 400px;">
+        <h1 id="desc">Blueprints of:</h1>
+        <input type="text" id="author">
+        <button type="button" class="btn btn-primary add_row" onclick="app.getBlueprints()">Get Blueprints</button>
+        <table>
+            <tr>
+                <thead>
+                <th>Blueprint name</th>
+                <th>number of points</th>
+                <th>enter</th>
+                </thead>
+            </tr>
+        </table>
+        <h1 id="totalBlueprints">Total user points: 0</h1>
+    </div>
+    <div style="width: 30%; height: 400px;">
+        <button type="button" class="btn btn-warning btnAlert" onclick="location.reload()">Create new blueprint</button>
+        </br>
+        </br>
+        </br>
+        <canvas id="Canvas" width="400" height="400" ></canvas>
+        </br>
+        <button type="button" class="btn btn-primary add_row" onclick="app.updateBlueprint()">Save/Update</button>
+        <button type="button" class="btn btn btn-danger btnDelete" onclick="app.deleteBlueprint()">Delete</button>
+        <h1 id="nameBlueprint" style="position: absolute; top: -140px; right: 300px;">Current Blueprint:</h1>
+    </div>
 </div>
-<button type="button" class="btn btn-primary add_row" onclick="app.updateBlueprint()">Save/update</button>
-<table>
 </body>
 </html>

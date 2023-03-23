@@ -85,8 +85,17 @@ public class BlueprintAPIController {
             return new ResponseEntity<>("no se pudo actualizar el recurso",HttpStatus.BAD_REQUEST);
         }
     }
-    
-    
+
+    @DeleteMapping(path = "/{author}/{bpname}")
+    public ResponseEntity<String> deleteBlueprint(@PathVariable String author, @PathVariable String bpname) {
+        try{
+            bps.deleteBlueprint(author,bpname);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (BlueprintNotFoundException e) {
+            return new ResponseEntity<>("not found",HttpStatus.BAD_REQUEST);
+        }
+
+    }
     
     
     

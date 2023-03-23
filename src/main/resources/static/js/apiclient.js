@@ -36,7 +36,19 @@ export const apiclient = (function(){
             }).catch(function(){
                 alert("ERROR, the blueprint wasnt saved")
             })         
-        }
+        },
 
-    }
+        deleteBlueprint : function(author,name){
+         $.ajax({
+                url: url  + author + "/" + name,
+                type: "DELETE",
+                success: function(result){
+                    alert("blueprint was deleted");
+                },
+                error: function(xhr, status, error){
+                    alert("blueprint don´t found");
+                }
+        })
+    })
+
 })();

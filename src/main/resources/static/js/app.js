@@ -168,16 +168,22 @@ window.app = function () {
 
 
 
-
-
-
-
-
+    function deleteBlueprint() {
+        var author = ($("#author").val()).split(" ").join("");
+        var name = ($("#nameBlueprint").text().split(" ")[2]);
+        var canvas = $("#Canvas");
+        canvas = $("#Canvas")[0];
+        var ctx = canvas.getContext("2d");
+        canvas.width = canvas.width;
+        getData.deleteBlueprint(author, name);
+        getBlueprints();
+            }
     return {
         getBlueprints: getBlueprints,
         drawBlueprints: drawBlueprints,
         Oninit: Oninit,
-        updateBlueprint: updateBlueprint
+        updateBlueprint: updateBlueprint,
+        deleteBlueprint:deleteBlueprint
     }
 
 }();
