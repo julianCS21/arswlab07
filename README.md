@@ -2,7 +2,7 @@
 #### Procesos de desarrollo de software - PDSW
 #### Construción de un cliente 'grueso' con un API REST, HTML5, Javascript y CSS3. Parte II.
 
-### Autor: Julian Castillo y Camilo Cantillo
+### Autores: Julian Castillo y Camilo Cantillo
 
 ## NOTA : LOS BOTONES FUNCIONAN SI SE DA DOBLE CLICK!!
 
