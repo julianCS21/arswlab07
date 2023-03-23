@@ -49,6 +49,8 @@ export const apiclient = (function(){
                     alert("blueprint don´t found");
                 }
         })
-    })
 
-})();
+    }
+
+
+}})();
